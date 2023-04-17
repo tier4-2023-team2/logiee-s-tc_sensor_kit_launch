@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(logiee-s-tc_sensor_kit_launch_description)
+project(logiee-s-tc_sensor_kit_description)
 
 find_package(ament_cmake_auto REQUIRED)
 
