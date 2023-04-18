@@ -1,6 +1,63 @@
 <?xml version="1.0"?>
 <robot name="vehicle" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:arg name="config_dir" default="$(find logiee-s-tc_sensor_kit_description)/config"/>
+  <xacro:arg name="gpu" default="false"/>
+
+  <!-- 本当はVLP32を読み込みたい -->
+  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+  <xacro:include filename="$(find imu_description)/urdf/imu.xacro"/>
+  <xacro:property name="calibration" value="${load_yaml('$(arg config_dir)/sensors_calibration.yaml')}"/>
+
+  <!-- front LiDAR -->
+  <xacro:VLP-16 parent="base_link" name="velodyne_front" topic="/sensing/lidar/front/pointcloud_ex" hz="10" samples="220" gpu="$(arg gpu)">
+    <origin
+      xyz="${calibration['base_link']['velodyne_front_base_link']['x']}
+           ${calibration['base_link']['velodyne_front_base_link']['y']}
+           ${calibration['base_link']['velodyne_front_base_link']['z']}"
+      rpy="${calibration['base_link']['velodyne_front_base_link']['roll']}
+           ${calibration['base_link']['velodyne_front_base_link']['pitch']}
+           ${calibration['base_link']['velodyne_front_base_link']['yaw']}"
+    />
+  </xacro:VLP-16>
+
+  <!-- rear LiDAR -->
+  <xacro:VLP-16 parent="base_link" name="velodyne_rear" topic="/sensing/lidar/rear/pointcloud_ex" hz="10" samples="220" gpu="$(arg gpu)">
+    <origin
+      xyz="${calibration['base_link']['velodyne_rear_base_link']['x']}
+           ${calibration['base_link']['velodyne_rear_base_link']['y']}
+           ${calibration['base_link']['velodyne_rear_base_link']['z']}"
+      rpy="${calibration['base_link']['velodyne_rear_base_link']['roll']}
+           ${calibration['base_link']['velodyne_rear_base_link']['pitch']}
+           ${calibration['base_link']['velodyne_rear_base_link']['yaw']}"
+    />
+  </xacro:VLP-16>
+
+  <!-- IMU -->
+  <xacro:imu_macro
+    name="imu_bottom"
+    parent="base_link"
+    namespace=""
+    x="${calibration['base_link']['imu_bottom_link']['x']}"
+    y="${calibration['base_link']['imu_bottom_link']['y']}"
+    z="${calibration['base_link']['imu_bottom_link']['z']}"
+    roll="${calibration['base_link']['imu_bottom_link']['roll']}"
+    pitch="${calibration['base_link']['imu_bottom_link']['pitch']}"
+    yaw="${calibration['base_link']['imu_bottom_link']['yaw']}"
+    fps="100"
+  />
+
+  <!-- Front CAMERA (Fisheye)-->
+
+  <!-- Front CAMERA (C1)-->
+
+  <!-- TBD -->
+</robot>
+
+
+
+<!-- <?xml version="1.0"?>
+<robot name="vehicle" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:arg name="config_dir" default="$(find logiee-s-tc_sensor_kit_description)/config"/>
   <xacro:property name="calibration" value="${xacro.load_yaml('$(arg config_dir)/sensors_calibration.yaml')}"/>
 
   <!-- sensor kit -->
@@ -27,4 +84,4 @@
            ${calibration['base_link']['velodyne_rear_base_link']['yaw']}"
     />
   </xacro:VLP-16> 
-</robot>
+</robot> -->

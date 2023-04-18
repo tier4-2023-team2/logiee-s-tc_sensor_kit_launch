@@ -1,22 +1,19 @@
 <launch>
-  <arg name="launch_driver" default="true"/>
+  <arg name="launch_driver" default="true" />
 
   <group>
-    <push-ros-namespace namespace="imu"/>
 
-    <group>
-      <push-ros-namespace namespace="tamagawa"/>
-      <node pkg="tamagawa_imu_driver" name="tag_serial_driver" exec="tag_serial_driver" if="$(var launch_driver)">
-        <remap from="imu/data_raw" to="imu_raw"/>
-        <param name="port" value="/dev/imu"/>
-        <param name="imu_frame_id" value="tamagawa/imu_link"/>
-      </node>
-    </group>
+    <push-ros-namespace namespace="imu" />
+
+    <include file="$(find-pzkg-share logiee_ss_sensor_launch)/launch/microstrain.launch.py">
+      <arg name="port" value="/dev/ttyACM0" />
+      <arg name="imu_frame_id" value="imu_bottom_link" />
+    </include>
 
     <include file="$(find-pkg-share imu_corrector)/launch/imu_corrector.launch.xml">
-      <arg name="input_topic" value="tamagawa/imu_raw"/>
-      <arg name="output_topic" value="imu_data"/>
-      <arg name="param_file" value="$(find-pkg-share individual_params)/config/$(env VEHICLE_ID default)/sample_sensor_kit/imu_corrector.param.yaml"/>
+      <arg name="input_topic" value="imu/data" />
+      <arg name="output_topic" value="imu_data" />
+      <arg name="param_file" value="$(var individual_params_config)/imu_corrector.param.yaml" />
     </include>
   </group>
 </launch>
