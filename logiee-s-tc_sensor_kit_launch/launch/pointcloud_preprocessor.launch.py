@@ -35,7 +35,7 @@ def launch_setup(context, *args, **kwargs):
         parameters=[
             {
                 "input_topics": [
-                    "/sensing/lidar/top/outlier_filtered/pointcloud",
+                    "/sensing/lidar/front/outlier_filtered/pointcloud",
                     "/sensing/lidar/rear/outlier_filtered/pointcloud"
                     # "/sensing/lidar/right/outlier_filtered/pointcloud",
                 ],

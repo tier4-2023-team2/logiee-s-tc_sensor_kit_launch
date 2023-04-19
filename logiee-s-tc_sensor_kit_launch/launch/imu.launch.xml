@@ -1,19 +1,23 @@
 <launch>
   <arg name="launch_driver" default="true" />
 
-  <group>
+  <!-- <group> -->
 
+  <group scoped="false">
     <push-ros-namespace namespace="imu" />
 
-    <include file="$(find-pzkg-share logiee_ss_sensor_launch)/launch/microstrain.launch.py">
-      <arg name="port" value="/dev/ttyACM0" />
-      <arg name="imu_frame_id" value="imu_bottom_link" />
-    </include>
+    <group>
+      <include file="$(find-pkg-share microstrain_inertial_driver)/launch/microstrain_launch.py">
+        <arg name="params_file" value="$(find-pkg-share logiee-s-tc_sensor_kit_launch)/config/microstrain.yaml"/>
+      </include>
+    </group>
 
-    <include file="$(find-pkg-share imu_corrector)/launch/imu_corrector.launch.xml">
-      <arg name="input_topic" value="imu/data" />
-      <arg name="output_topic" value="imu_data" />
-      <arg name="param_file" value="$(var individual_params_config)/imu_corrector.param.yaml" />
-    </include>
+    <group>
+      <include file="$(find-pkg-share imu_corrector)/launch/imu_corrector.launch.xml">
+        <arg name="input_topic" value="/imu/data" />
+        <arg name="output_topic" value="/sensing/imu/imu_data" />
+        <arg name="param_file" value="$(find-pkg-share individual_params)/config/default/logiee-s-tc_sensor_kit/imu_corrector.param.yaml" />
+      </include> 
+    </group>
   </group>
 </launch>
