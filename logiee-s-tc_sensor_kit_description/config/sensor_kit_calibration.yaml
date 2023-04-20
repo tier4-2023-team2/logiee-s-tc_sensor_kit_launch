@@ -1,32 +1,38 @@
-sensor_kit_base_link:
-  velodyne_rear_base_link:
-    x: -0.267
-    y: 0.0
-    z: 0.262
-    roll: 0.0
-    pitch: 0.0
-    yaw: 3.1415926535
-  velodyne_front_base_link:
-    x: 0.705
-    y: 0.0
-    z: 0.262
-    roll: 0.0
-    pitch: 0.0
-    yaw: 0.0
-  imu_bottom_link:
-    x: -0.08
-    y: 0.0
-    z: 0.222
-    roll: 3.1415926535
-    pitch: 0.0
-    yaw: 0.0
-    sensor:
-      x: 0.0
-      y: 0.0
-      z: 0.0
-      roll: 0
-      pitch: 0.0
-      yaw: 0.0
+sensor_kit_base_link2velodyne_rear:
+  x: -0.267
+  y: 0.0
+  z: 0.262
+  roll: 0.0
+  pitch: 0.0
+  yaw: 3.1415926535
+sensor_kit_base_link2velodyne_front:
+  x: 0.705
+  y: 0.0
+  z: 0.262
+  roll: 0.0
+  pitch: 0.0
+  yaw: 0.0
+sensor_kit_base_link2front_c1_cam: 
+  x: 0.705
+  y: 0.0
+  z: 0.262
+  roll: 0.0
+  pitch: 0.0
+  yaw: 0.0
+sensor_kit_base_link2front_default_cam:
+  x: 0.705
+  y: 0.0
+  z: 0.362
+  roll: 0.0
+  pitch: 0.0
+  yaw: 0.0
+sensor_kit_base_link2imu:
+  x: 0.0
+  y: 0.0
+  z: 0.0
+  roll: 0.0
+  pitch: 0.0
+  yaw: 0.0
 # sensor_kit_base_link:
 #   camera0/camera_link:
 #     x: 0.10731
