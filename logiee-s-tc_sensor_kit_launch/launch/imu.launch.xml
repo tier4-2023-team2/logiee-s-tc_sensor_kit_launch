@@ -9,6 +9,8 @@
     <group>
       <include file="$(find-pkg-share microstrain_inertial_driver)/launch/microstrain_launch.py">
         <arg name="params_file" value="$(find-pkg-share logiee-s-tc_sensor_kit_launch)/config/microstrain.yaml"/>
+        <arg name="configure" value="true"/>
+        <arg name="activate" value="true"/>
       </include>
     </group>
 
