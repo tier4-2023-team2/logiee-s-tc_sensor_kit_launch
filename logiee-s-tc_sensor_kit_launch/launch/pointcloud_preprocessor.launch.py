@@ -34,10 +34,10 @@ def launch_setup(context, *args, **kwargs):
         remappings=[("output", "concatenated/pointcloud")],
         parameters=[
             {
-                "input_topics": [
+                "input_topics": 
+                  [
                     "/sensing/lidar/front/outlier_filtered/pointcloud",
                     "/sensing/lidar/rear/outlier_filtered/pointcloud"
-                    # "/sensing/lidar/right/outlier_filtered/pointcloud",
                 ],
                 "output_frame": LaunchConfiguration("base_frame"),
             }
