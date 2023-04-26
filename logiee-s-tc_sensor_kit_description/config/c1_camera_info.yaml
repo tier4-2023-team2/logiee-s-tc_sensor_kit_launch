@@ -1,0 +1,26 @@
+image_width: 1920
+image_height: 1280
+camera_name: "gmsl2-usb3.0_conversion_kit"
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [833.93357,   0.     , 961.29277,
+           0.     , 885.79026, 634.60402,
+           0.     ,   0.     ,   1.     ]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.133090, 0.017776, -0.001474, -0.000684, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1., 0., 0.,
+         0., 1., 0.,
+         0., 0., 1.]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [667.88489,   0.     , 956.33905,   0.     ,
+           0.     , 819.01422, 630.38684,   0.     ,
+           0.     ,   0.     ,   1.     ,   0.     ]

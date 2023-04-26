@@ -19,6 +19,8 @@
   <exec_depend>usb_cam</exec_depend>
   <exec_depend>microstrain_inertial_driver</exec_depend>
   <exec_depend>v4l2_camera</exec_depend>
+  <exec_depend>image_proc</exec_depend>
+  
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>autoware_lint_common</test_depend>

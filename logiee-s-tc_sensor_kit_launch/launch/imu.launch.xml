@@ -18,7 +18,7 @@
       <include file="$(find-pkg-share imu_corrector)/launch/imu_corrector.launch.xml">
         <arg name="input_topic" value="/imu/data" />
         <arg name="output_topic" value="/sensing/imu/imu_data" />
-        <arg name="param_file" value="$(find-pkg-share individual_params)/config/default/logiee-s-tc_sensor_kit/imu_corrector.param.yaml" />
+        <arg name="params_file" value="$(find-pkg-share logiee-s-tc_sensor_kit_launch)/config/imu_corrector.param.yaml"/>
       </include> 
     </group>
   </group>
