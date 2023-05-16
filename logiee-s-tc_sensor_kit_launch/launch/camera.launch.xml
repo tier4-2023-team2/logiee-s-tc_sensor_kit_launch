@@ -6,7 +6,6 @@
     <push-ros-namespace namespace="camera"/>
 
     <include file="$(find-pkg-share v4l2_camera)/launch/v4l2_camera.launch.py">
-        <arg name="device" value="/dev/video0"/>
       <arg name="pixel_format" value="YUYV"/>
       <arg name="image_topic" value="image"/>
       <arg name="camera_name" value="c1"/>
@@ -14,24 +13,6 @@
       <arg name="v4l2_camera_param_path" value="$(find-pkg-share logiee-s-tc_sensor_kit_description)/config/c1_camera.param.yaml"/>
     </include>
 
-    <node pkg="image_proc" exec="image_proc" name="image_proc">
-        <remap from="image" to="/sensing/camera/c1/image"/>
-        <remap from="camera_info" to="/sensing/camera/c1/camera_info"/>
-        <remap from="image_rect" to="/sensing/camera/c1/image_rect"/>
-    </node>
-
-    <include file="$(find-pkg-share v4l2_camera)/launch/v4l2_camera.launch.py">
-      <arg name="image_topic" value="image"/>
-      <arg name="camera_name" value="default_cam"/>
-      <arg name="camera_info_url" value="file://$(find-pkg-share logiee-s-tc_sensor_kit_description)/config/default_camera_info.yaml"/>
-      <arg name="v4l2_camera_param_path" value="$(find-pkg-share logiee-s-tc_sensor_kit_description)/config/default_camera.param.yaml"/>
-    </include>
-
-    <node pkg="image_proc" exec="image_proc" name="image_proc2">
-        <remap from="image" to="/sensing/camera/default_cam/image"/>
-        <remap from="camera_info" to="/sensing/camera/default_cam/camera_info"/>
-        <remap from="image_rect" to="/sensing/camera/default_cam/image_rect"/>
-    </node>
 
 
   </group>
